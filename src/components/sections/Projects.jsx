@@ -20,6 +20,11 @@ const ProjectCard = ({ project, onDetails, index }) => (
         transition={{ delay: index * 0.1, duration: 0.6 }}
         whileHover={{ y: -5 }}
         className="card group"
+        onMouseMove={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        }}
     >
         <h3 className="text-lg font-semibold text-text-primary mb-2 group-hover:text-slate transition-colors duration-300">
             {project.title}
@@ -58,15 +63,20 @@ const TechStackGrid = () => (
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: index * 0.05, duration: 0.4 }}
                     whileHover={{ scale: 1.08 }}
-                    className="card flex flex-col items-center justify-center py-6 px-4 text-center"
+                    className="card flex flex-col items-center justify-center py-6 px-4 text-center group"
+                    onMouseMove={(e) => {
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        e.currentTarget.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+                        e.currentTarget.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+                    }}
                 >
                     {IconComponent && (
                         <IconComponent
-                            className="w-10 h-10 mb-3"
+                            className="w-10 h-10 mb-3 group-hover:scale-110 transition-transform duration-300 relative z-10"
                             style={{ color: item.color }}
                         />
                     )}
-                    <span className="text-xs font-medium text-text-secondary">
+                    <span className="text-xs font-medium text-text-secondary relative z-10">
                         {item.name}
                     </span>
                 </motion.div>

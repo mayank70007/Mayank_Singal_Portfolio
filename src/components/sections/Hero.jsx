@@ -21,10 +21,22 @@ const Hero = () => {
             opacity: 1,
             y: 0,
             transition: {
-                duration: 0.6,
-                ease: [0.4, 0, 0.2, 1],
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
             },
         },
+    }
+
+    const textStaggerVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1]
+            }
+        }
     }
 
     const scrollToProjects = () => {
@@ -58,13 +70,16 @@ const Hero = () => {
                 </motion.div>
 
                 {/* Main Heading */}
-                <motion.div variants={itemVariants} className="mb-6">
-                    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+                <motion.div variants={itemVariants} className="mb-6 overflow-hidden">
+                    <motion.h1 
+                        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+                        variants={textStaggerVariants}
+                    >
                         Hi, I'm{' '}
                         <span className="text-gradient-subtle bg-gradient-to-r from-slate to-silver-muted bg-clip-text text-transparent">
                             {heroContent.name}
                         </span>
-                    </h1>
+                    </motion.h1>
                 </motion.div>
 
                 {/* Rotating Titles */}

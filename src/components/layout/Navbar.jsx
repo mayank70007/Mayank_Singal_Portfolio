@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion'
 import { HiMenuAlt4, HiX } from 'react-icons/hi'
 import { navLinks } from '../../data/config'
 
@@ -7,6 +7,13 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const [activeSection, setActiveSection] = useState('')
+
+    const { scrollYProgress } = useScroll()
+    const scaleX = useSpring(scrollYProgress, {
+        stiffness: 100,
+        damping: 30,
+        restDelta: 0.001
+    })
 
     useEffect(() => {
         const handleScroll = () => {
@@ -54,6 +61,12 @@ const Navbar = () => {
                     : 'bg-transparent'
                     }`}
             >
+                {/* Scroll Progress Bar */}
+                <motion.div
+                    className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-slate via-silver to-slate origin-left"
+                    style={{ scaleX }}
+                />
+                
                 <nav className="section-container">
                     <div className="flex items-center justify-between h-16 sm:h-20">
                         {/* Logo */}

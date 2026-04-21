@@ -67,10 +67,11 @@
     }
 
     .btn-primary {
-        @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary glass-card cursor-pointer relative overflow-hidden;
+        @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary glass-card cursor-pointer relative overflow-hidden transform-gpu;
         background: linear-gradient(135deg, rgba(112, 128, 144, 0.2), rgba(168, 168, 168, 0.15));
         color: white;
         border-color: rgba(112, 128, 144, 0.3);
+        will-change: transform, box-shadow;
     }
 
     .btn-primary::after {
@@ -93,7 +94,8 @@
     }
 
     .btn-secondary {
-        @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary glass-card text-text-primary;
+        @apply inline-flex items-center justify-center px-6 py-3 text-sm font-medium rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary glass-card text-text-primary transform-gpu;
+        will-change: transform, background-color;
     }
 
     .btn-secondary:hover {
@@ -110,7 +112,27 @@
     }
 
     .card {
-        @apply rounded-2xl p-6 transition-all duration-300 glass-card glass-card-hover;
+        @apply rounded-2xl p-6 transition-all duration-300 glass-card glass-card-hover relative overflow-hidden transform-gpu;
+        will-change: transform, box-shadow;
+    }
+
+    .card::before {
+        content: '';
+        @apply absolute inset-0 transition-opacity duration-300 opacity-0 pointer-events-none;
+        background: radial-gradient(
+            600px circle at var(--mouse-x) var(--mouse-y),
+            rgba(255, 255, 255, 0.06),
+            transparent 40%
+        );
+        z-index: 0;
+    }
+
+    .card:hover::before {
+        @apply opacity-100;
+    }
+
+    .card > * {
+        @apply relative z-10;
     }
 
     .card-interactive {
