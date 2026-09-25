@@ -22,14 +22,16 @@ export const siteConfig = {
     resumeDownloadName: 'Mayank_Resume.pdf',
 }
 
+const runtimeEnv = import.meta.env || (typeof process !== 'undefined' ? process.env : {})
+
 // EmailJS configuration — sign up at https://www.emailjs.com/
 // 1. Create a service (connect your Gmail/email)
 // 2. Create an email template with variables: {{from_name}}, {{from_email}}, {{message}}
 // 3. Get your Public Key from Account > API Keys
 export const emailjsConfig = {
-    serviceId: (import.meta.env.VITE_EMAILJS_SERVICE_ID || '').trim(),
-    templateId: (import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '').trim(),
-    publicKey: (import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '').trim(),
+    serviceId: (runtimeEnv.VITE_EMAILJS_SERVICE_ID || '').trim(),
+    templateId: (runtimeEnv.VITE_EMAILJS_TEMPLATE_ID || '').trim(),
+    publicKey: (runtimeEnv.VITE_EMAILJS_PUBLIC_KEY || '').trim(),
 }
 
 export const socialLinks = {
