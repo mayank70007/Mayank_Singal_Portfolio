@@ -4,7 +4,7 @@
  */
 
 import {
-    SiHtml5, SiCss3, SiJavascript, SiReact, SiNextdotjs, SiSpring, SiSpringboot,
+    SiHtml5, SiCss3, SiJavascript, SiReact, SiSpring, SiSpringboot,
     SiNodedotjs, SiExpress, SiTailwindcss, SiMongodb, SiMysql,
     SiRedis, SiDocker, SiGit, SiFirebase, SiVercel,
 } from 'react-icons/si'
@@ -91,6 +91,11 @@ export const aboutContent = {
 }
 
 export const techStackItems = [
+    { name: 'RAG Pipelines', color: '#F59E0B' },
+    { name: 'LangChain', color: '#1F9D55' },
+    { name: 'Ollama', color: '#ffffff' },
+    { name: 'FAISS', color: '#60A5FA' },
+    { name: 'Vector Search', color: '#A78BFA' },
     { name: 'Spring Boot', color: '#6DB33F', icon: SiSpringboot },
     { name: 'Spring', color: '#6DB33F', icon: SiSpring },
     { name: 'Java', color: '#ED8B00', icon: FaJava },
@@ -114,6 +119,23 @@ export const techStackItems = [
 export const projects = [
     {
         id: 1,
+        title: 'DocuMind AI - RAG-Based Document Intelligence Platform',
+        shortDescription: 'RAG-powered document question answering with local LLMs and semantic search.',
+        fullDescription: 'Built a document intelligence platform that lets users ask questions over uploaded files using retrieval-augmented generation, semantic search, and local language models.',
+        tech: ['React.js', 'FastAPI', 'Spring Boot', 'LangChain', 'Ollama', 'FAISS', 'RAG', 'REST APIs'],
+        features: [
+            'Built a RAG system using FastAPI and FAISS for document-aware question answering',
+            'Implemented retrieval pipelines with PDF chunking, embedding generation, and vector similarity search',
+            'Developed prompt-driven RAG workflows using LangChain and Ollama to generate context-aware responses',
+            'Integrated AI-assisted retrieval and response generation pipelines with streaming and chat memory support',
+            'Containerized services with Docker and secured APIs using token-based authentication',
+        ],
+        liveUrl: 'https://github.com/mayank70007',
+        githubUrl: 'https://github.com/mayank70007',
+        featured: true,
+    },
+    {
+        id: 2,
         title: 'CareSync - Microservices Hospital Management System',
         shortDescription: 'Microservices hospital platform for appointments, records, and role-based workflows.',
         fullDescription: 'Built a healthcare management system with Spring Boot microservices, Eureka service discovery, JWT-based authentication, and a React dashboard for appointment and medical record management.',
@@ -130,7 +152,7 @@ export const projects = [
         featured: true,
     },
     {
-        id: 2,
+        id: 3,
         title: 'CoachConnect - Real-Time Mentorship Platform',
         shortDescription: 'Mentorship platform with role-based workflows and live messaging.',
         fullDescription: 'Built a mentorship platform with role-aware backend structure, secure authentication, real-time communication, and workflow modeling for subscriptions, tasks, and progress tracking.',
@@ -147,7 +169,7 @@ export const projects = [
         featured: true,
     },
     {
-        id: 3,
+        id: 4,
         title: 'EventSphere - Event Management Platform',
         shortDescription: 'Event platform for creation, registration, and event data management.',
         fullDescription: 'Built a full-stack event management system with a Node.js and Express.js backend, a React.js frontend, and MongoDB persistence for event lifecycle operations.',
@@ -185,15 +207,32 @@ export const education = {
         {
             degree: 'B.E. in Computer Science',
             school: 'Chitkara University, CUIET | Rajpura, India',
-            period: '2023 — 2027'
+            period: '2023 — 2027',
+            description: 'CGPA: 9.39',
         },
         {
             degree: 'XII - Non-Medical',
             school: 'S.A. Jain Senior Model School | Ambala, India',
             period: '2023',
+            description: 'Class XII: 91.8% | Class X: 88.8% (2021)',
         }
     ],
 }
+
+export const achievements = [
+    {
+        title: 'Competitive Programming',
+        description: 'Solved 600+ DSA problems, including 300+ on LeetCode.',
+    },
+    {
+        title: 'Hack4Hire Hackathon (2025)',
+        description: 'Secured 2nd place among 400+ teams while developing CoachConnect, a real-time fitness mentorship platform using Node.js, Express.js, MongoDB, Redis, Socket.IO, Docker, and JWT authentication.',
+    },
+    {
+        title: 'DICE Technology 2.0 (2025)',
+        description: 'Achieved 2nd place for developing a sensor-driven vending machine.',
+    },
+]
 
 export const profiles = [
     {

@@ -69,34 +69,6 @@ app.get('/api/download/resume', (req, res) => {
     })
 })
 
-// Projects API (optional - for dynamic content)
-app.get('/api/projects', (req, res) => {
-    // This could fetch from a database in production
-    const projects = [
-        {
-            id: 1,
-            title: 'E-Commerce Platform',
-            description: 'Full-stack e-commerce solution',
-            tech: ['React', 'Node.js', 'PostgreSQL'],
-        },
-        {
-            id: 2,
-            title: 'Task Management App',
-            description: 'Collaborative project management tool',
-            tech: ['React', 'TypeScript', 'Supabase'],
-        },
-        {
-            id: 3,
-            title: 'AI Content Generator',
-            description: 'AI-powered content generation platform',
-            tech: ['Next.js', 'Python', 'FastAPI'],
-        },
-    ]
-
-    res.json({ projects })
-})
-
-
 // Serve React build
 app.use(express.static(path.join(__dirname, "../dist")));
 

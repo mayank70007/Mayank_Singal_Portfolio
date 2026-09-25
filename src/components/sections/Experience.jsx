@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi'
-import { experiences, education } from '../../data/config'
+import { experiences, education, achievements } from '../../data/config'
 
 const TimelineItem = ({ experience, index, isLast }) => {
     const [isExpanded, setIsExpanded] = useState(false)
@@ -186,6 +186,18 @@ const Experience = () => {
                                 <p className="text-sm text-text-secondary mt-3">
                                     {item.description}
                                 </p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                <motion.div variants={itemVariants} className="mt-16 max-w-3xl">
+                    <h3 className="text-lg font-semibold text-text-primary mb-6">Achievements</h3>
+                    <div className="space-y-4">
+                        {achievements.map((achievement) => (
+                            <div key={achievement.title} className="card">
+                                <h4 className="font-medium text-text-primary">{achievement.title}</h4>
+                                <p className="text-sm text-text-secondary mt-2">{achievement.description}</p>
                             </div>
                         ))}
                     </div>

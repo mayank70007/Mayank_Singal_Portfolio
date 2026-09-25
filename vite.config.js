@@ -5,12 +5,7 @@ export default defineConfig({
     plugins: [react()],
     server: {
         port: 3000,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:5000',
-                changeOrigin: true,
-            }
-        }
+        strictPort: true,
     },
     build: {
         outDir: 'dist',
@@ -19,7 +14,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    vendor: ['react', 'react-dom', 'react-router-dom'],
+                    vendor: ['react', 'react-dom'],
                     animations: ['framer-motion'],
                 }
             }

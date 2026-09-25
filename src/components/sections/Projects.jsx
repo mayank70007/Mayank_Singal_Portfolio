@@ -55,7 +55,7 @@ const ProjectCard = ({ project, onDetails, index }) => (
 const TechStackGrid = () => (
     <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4">
         {techStackItems.map((item, index) => {
-            const IconComponent = item.icon
+            const IconComponent = item.icon || HiChip
             return (
                 <motion.div
                     key={item.name}
