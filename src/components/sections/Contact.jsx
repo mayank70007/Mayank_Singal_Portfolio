@@ -12,6 +12,7 @@ const Contact = () => {
         message: '',
     })
     const [status, setStatus] = useState('idle') // idle, loading, success, error
+    const [statusMessage, setStatusMessage] = useState('')
     const [errors, setErrors] = useState({})
 
     const [ref, inView] = useInView({
@@ -48,6 +49,7 @@ const Contact = () => {
         if (!validateForm()) return
 
         setStatus('loading')
+        setStatusMessage('')
 
         try {
             const emailJsConfigured = Boolean(
@@ -57,7 +59,7 @@ const Contact = () => {
             )
 
             if (!emailJsConfigured) {
-                throw new Error('EmailJS is not configured')
+                throw new Error('EmailJS is not configured. Add the VITE_EMAILJS_* variables to your deployment.')
             }
 
             await emailjs.send(
@@ -72,6 +74,7 @@ const Contact = () => {
             )
 
             setStatus('success')
+            setStatusMessage('Your message was sent successfully.')
             setFormData({ name: '', email: '', message: '' })
 
             // Reset status after 5 seconds
@@ -79,6 +82,7 @@ const Contact = () => {
         } catch (error) {
             console.error('Contact form error:', error)
             setStatus('error')
+            setStatusMessage(error?.text || error?.message || 'Email service failed. Check your EmailJS configuration.')
 
             // Reset status after 5 seconds
             setTimeout(() => setStatus('idle'), 5000)
@@ -302,6 +306,11 @@ const Contact = () => {
                                 )}
                             </AnimatePresence>
                         </motion.button>
+                        {statusMessage && (
+                            <p className={`text-sm mt-3 ${status === 'success' ? 'text-green-400' : 'text-red-400'}`}>
+                                {statusMessage}
+                            </p>
+                        )}
                     </motion.form>
 
                 </div>
