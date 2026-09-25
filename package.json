@@ -38,7 +38,6 @@
         "vite": "^5.4.5"
     },
     "description": "A modern, high-performance portfolio website built with React, Vite, Tailwind CSS, and Framer Motion.",
-    "main": "postcss.config.js",
     "author": "",
     "license": "ISC"
 }
